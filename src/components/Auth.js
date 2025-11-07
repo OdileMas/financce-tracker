@@ -42,9 +42,14 @@ function Auth() {
           </div>
         ) : (
           <div className="form-content">
+            <span>Full name</span>
             <input type="text" placeholder="Full Name" />
+            <span>Email</span>
             <input type="email" placeholder="Email" />
+            <span>Password</span>
             <input type="password" placeholder="Password" />
+            <span>Confirm</span>
+            <input type="password" placeholder="confirm password" />
             <button className="auth-btn">Signup</button>
           </div>
         )}
