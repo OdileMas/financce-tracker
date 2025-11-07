@@ -1,0 +1,76 @@
+.home-container {
+  text-align: center;
+  padding: 80px 20px;
+  font-family: "Poppins", sans-serif;
+  background-color: #f9fbfd;
+  min-height: 100vh;
+}
+
+/* Capsule title box */
+.tracker-name {
+  display: inline-block;
+  background-color: #e7f3ff;
+  color: #007bff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Headline */
+.headline {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 10px 0;
+  color: #30a3d8;
+}
+
+.headline .highlight {
+  color: #b33a3a; /* brownish red */
+}
+
+/* Description */
+.description {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 10px auto 40px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.get-started-btn {
+  background-color: #30a3d8;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.get-started-btn:hover {
+  background-color: #1f7fb3;
+}
+
+.view-dashboard-btn {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-dashboard-btn:hover {
+  color: #c82333; /* red on hover */
+}
