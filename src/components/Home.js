@@ -26,7 +26,7 @@ function Home() {
         <button className="get-started-btn" onClick={() => navigate("/auth")}>
           Get Started Free →
         </button>
-        <button className="view-dashboard-btn">View Dashboard</button>
+        <button className="view-dashboard-btn" onClick={() => navigate("/dashboard")}>View Dashboard</button>
       </div>
 
       {/* Feature boxes */}
