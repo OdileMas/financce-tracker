@@ -7,29 +7,31 @@ function Home() {
 
   return (
     <div className="home-container">
-      {/* Website name capsule */}
       <div className="tracker-name">Smart Expense Management</div>
 
-      {/* Big headline */}
       <h1 className="headline">
-        Take Control of <span className="highlight">Your</span> Finances
+        Take Control<span className="ooof"> of </span>
+        <span className="highlight">Your </span> 
+        <span className="fina">Finances</span>
       </h1>
 
-      {/* Description */}
+      
       <p className="description">
         Track expenses, visualize spending patterns, and achieve your financial goals
         with our intuitive expense tracker.
       </p>
 
-      {/* Buttons row */}
+      
       <div className="button-row">
         <button className="get-started-btn" onClick={() => navigate("/auth")}>
           Get Started Free →
         </button>
-        <button className="view-dashboard-btn" onClick={() => navigate("/dashboard")}>View Dashboard</button>
+        <button className="view-dashboard-btn" onClick={() => navigate("/dashboard")}>
+          View Dashboard
+          </button>
       </div>
 
-      {/* Feature boxes */}
+      
       <div className="features-grid">
         <div className="feature-box">
           <div className="feature-icon" style={{ backgroundColor: '#e0f7fa' }}>
@@ -38,7 +40,9 @@ function Home() {
               <path d="M21 7v6" />
             </svg>
           </div>
-          <h3 className="feature-title">Track Expenses</h3>
+          <h3 className="feature-title">
+            Track Expenses
+          </h3>
           <p className="feature-description">
             Easily log and categorize all your expenses in seconds.
           </p>
