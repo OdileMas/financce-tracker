@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { User, Mail, Lock, ArrowLeft, Loader2 } from "lucide-react";
 import "./Auth.css";
 
 function Auth() {
@@ -15,7 +16,7 @@ function Auth() {
     password: "",
     confirmPassword: "",
     username: "",
-    fullName: "" // Kept for UI but not sent to backend if not needed or mapped to username
+    fullName: ""
   });
 
   const handleChange = (e) => {
@@ -46,24 +47,31 @@ function Auth() {
 
   return (
     <div className="auth-container">
-
+      <div className="auth-bg-blob auth-blob-1"></div>
+      <div className="auth-bg-blob auth-blob-2"></div>
+      
       <button className="back-btn" onClick={() => navigate("/")}>
-        ← Back To Home
+        <ArrowLeft size={18} /> Back To Home
       </button>
 
-      <div className="auth-box">
-        <div className="welcome">Welcome To Expense Tracker</div>
-        <p>Sign in to your Account or Create a new one</p>
+      <div className="auth-box glass-card">
+        <div className="auth-header">
+          <h2 className="welcome">Welcome to FinanceTracker</h2>
+          <p className="auth-subtitle">
+            {isLogin ? "Sign in to access your dashboard" : "Create an account to get started"}
+          </p>
+        </div>
+
         <div className="tab-row">
           <div
             className={`tab ${isLogin ? "active" : ""}`}
-            onClick={() => setIsLogin(true)}
+            onClick={() => { setIsLogin(true); setError(""); }}
           >
             Login
           </div>
           <div
             className={`tab ${!isLogin ? "active" : ""}`}
-            onClick={() => setIsLogin(false)}
+            onClick={() => { setIsLogin(false); setError(""); }}
           >
             Signup
           </div>
@@ -74,58 +82,85 @@ function Auth() {
         <form onSubmit={handleSubmit} className="form-content">
           {!isLogin && (
             <>
-              <span>Username</span>
+              <div className="input-group">
+                <label>Username</label>
+                <div className="input-wrapper">
+                  <User className="input-icon" size={18} />
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="e.g. johndoe"
+                    value={formData.username}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="input-group">
+                <label>Full Name</label>
+                <div className="input-wrapper">
+                  <User className="input-icon" size={18} />
+                  <input
+                    type="text"
+                    name="fullName"
+                    placeholder="John Doe"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            </>
+          )}
+
+          <div className="input-group">
+            <label>Email Address</label>
+            <div className="input-wrapper">
+              <Mail className="input-icon" size={18} />
               <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={formData.username}
+                type="email"
+                name="email"
+                placeholder="youremail@example.com"
+                value={formData.email}
                 onChange={handleChange}
                 required
               />
-              <span>Full name</span>
-              <input
-                type="text"
-                name="fullName"
-                placeholder="Full Name"
-                value={formData.fullName}
-                onChange={handleChange}
-              />
-            </>
-          )}
-          <span>Email</span>
-          <input
-            type="email"
-            name="email"
-            placeholder="yourEmail@gmail.com"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <span>Password</span>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          {!isLogin && (
-            <>
-              <span>Confirm</span>
+            </div>
+          </div>
+
+          <div className="input-group">
+            <label>Password</label>
+            <div className="input-wrapper">
+              <Lock className="input-icon" size={18} />
               <input
                 type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={formData.confirmPassword}
+                name="password"
+                placeholder="Enter password"
+                value={formData.password}
                 onChange={handleChange}
                 required
               />
-            </>
+            </div>
+          </div>
+
+          {!isLogin && (
+            <div className="input-group">
+              <label>Confirm Password</label>
+              <div className="input-wrapper">
+                <Lock className="input-icon" size={18} />
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Re-enter password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
           )}
+
           <button className="auth-btn" type="submit" disabled={loading}>
-            {loading ? "Processing..." : (isLogin ? "Login" : "Signup")}
+            {loading ? <Loader2 className="spinner" size={20} /> : (isLogin ? "Login" : "Create Account")}
           </button>
         </form>
       </div>

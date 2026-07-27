@@ -1,108 +1,140 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { 
+  BarChart3, PieChart, ShieldCheck, Target, 
+  ArrowRight, Globe, MessageCircle, Hash
+} from "lucide-react";
 import "./Home.css";
 
 function Home() {
   const navigate = useNavigate();
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="home-container">
-      <div className="tracker-name">Smart Expense Management</div>
-
-      <h1 className="headline">
-        Take Control<span className="ooof"> of </span>
-        <span className="highlight">Your </span> 
-        <span className="fina">Finances</span>
-      </h1>
-
-      
-      <p className="description">
-        Track expenses, visualize spending patterns, and achieve your financial goals
-        with our intuitive expense tracker.
-      </p>
-
-      
-      <div className="button-row">
-        <button className="get-started-btn" onClick={() => navigate("/auth")}>
-          Get Started Free →
-        </button>
-        <button className="view-dashboard-btn" onClick={() => navigate("/dashboard")}>
-          View Dashboard
-          </button>
-      </div>
-
-      
-      <div className="features-grid">
-        <div className="feature-box">
-          <div className="feature-icon" style={{ backgroundColor: '#e0f7fa' }}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bcd4" strokeWidth="2">
-              <path d="M3 17l3-3 4 4 8-8 3 3" />
-              <path d="M21 7v6" />
-            </svg>
-          </div>
-          <h3 className="feature-title">
-            Track Expenses
-          </h3>
-          <p className="feature-description">
-            Easily log and categorize all your expenses in seconds.
+      {/* Hero Section with Interactive Background Image */}
+      <section className="hero-section">
+        <div className="hero-bg-image"></div>
+        <div className="hero-overlay"></div>
+        
+        <div className="hero-content">
+          <div className="badge glass-card">Smart Expense Management</div>
+          <h1 className="headline">
+            Master your finances <br />
+            with <span className="highlight-text">clarity.</span>
+          </h1>
+          <p className="hero-description">
+            Experience a modern, intuitive way to track your spending, analyze patterns, 
+            and achieve your financial goals effortlessly.
           </p>
-        </div>
-
-        <div className="feature-box">
-          <div className="feature-icon" style={{ backgroundColor: '#e0f7fa' }}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bcd4" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 6v6l4 2" />
-            </svg>
+          <div className="button-group">
+            <button className="primary-btn" onClick={() => navigate("/auth")}>
+              Get Started Now <ArrowRight size={18} />
+            </button>
+            <button className="secondary-btn glass-card" onClick={() => navigate("/dashboard")}>
+              View Dashboard
+            </button>
           </div>
-          <h3 className="feature-title">Visual Analytics</h3>
-          <p className="feature-description">
-            Beautiful charts and graphs to understand your spending.
-          </p>
         </div>
+      </section>
 
-        <div className="feature-box">
-          <div className="feature-icon" style={{ backgroundColor: '#e0f7fa' }}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bcd4" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <circle cx="12" cy="12" r="6" />
-              <circle cx="12" cy="12" r="2" />
-            </svg>
+      {/* About Section */}
+      <section className="about-section">
+        <div className="section-header">
+          <h2>What is this system?</h2>
+          <p>Your personal financial assistant, simplified.</p>
+        </div>
+        <div className="about-grid">
+          <div className="about-card glass-card">
+            <div className="icon-wrapper">
+              <BarChart3 size={48} color="#C65C26" />
+            </div>
+            <h3>What it does</h3>
+            <p>
+              It provides a centralized dashboard to log all your daily expenses, 
+              categorize them, and visualize where your money is going over time.
+            </p>
           </div>
-          <h3 className="feature-title">Set Budgets</h3>
-          <p className="feature-description">
-            Create category budgets and stay on track with your goals.
-          </p>
-        </div>
-
-        <div className="feature-box">
-          <div className="feature-icon" style={{ backgroundColor: '#e0f7fa' }}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bcd4" strokeWidth="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
+          <div className="about-card glass-card">
+            <div className="icon-wrapper">
+              <PieChart size={48} color="#C65C26" />
+            </div>
+            <h3>How it helps</h3>
+            <p>
+              By giving you a clear picture of your spending habits, it empowers you 
+              to make informed decisions, cut unnecessary costs, and save more.
+            </p>
           </div>
-          <h3 className="feature-title">Secure & Private</h3>
-          <p className="feature-description">
-            Your financial data is encrypted and completely private.
-          </p>
         </div>
-      </div>
+      </section>
 
-      {/* Stats banner */}
-      <div className="stats-banner">
-        <div className="stat-item">
-          <div className="stat-number">100%</div>
-          <div className="stat-label">Free to Use</div>
+      {/* Expectations Section */}
+      <section className="expectations-section">
+        <div className="section-header">
+          <h2>What to expect</h2>
+          <p>A seamless journey from start to financial freedom.</p>
         </div>
-        <div className="stat-item">
-          <div className="stat-icon">∞</div>
-          <div className="stat-label">Unlimited Transactions</div>
+        <div className="timeline-container">
+          <div className="timeline-item glass-card">
+            <div className="timeline-marker">
+              <Target size={24} />
+            </div>
+            <div className="timeline-content">
+              <h3>Before creating an account</h3>
+              <p>
+                You can explore the interface and understand our features. However, 
+                your financial data requires a secure account to be stored, analyzed, 
+                and protected properly.
+              </p>
+            </div>
+          </div>
+          <div className="timeline-item glass-card">
+            <div className="timeline-marker">
+              <ShieldCheck size={24} />
+            </div>
+            <div className="timeline-content">
+              <h3>After creating an account</h3>
+              <p>
+                Unlock the full potential! Log unlimited transactions, generate visual 
+                reports, set up categories, and access your dashboard securely from 
+                any device, anytime.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="stat-item">
-          <div className="stat-number">24/7</div>
-          <div className="stat-label">Access Anywhere</div>
+      </section>
+
+      {/* Footer / Contact Section */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-brand">
+            <h3>FinanceTracker</h3>
+            <p>Take control of your money.</p>
+          </div>
+          <div className="footer-contact">
+            <h4>Contact Us</h4>
+            <p>Have questions? We're here to help.</p>
+            <a href="mailto:support@financetracker.com" className="contact-link">
+              support@financetracker.com
+            </a>
+          </div>
+          <div className="footer-socials">
+            <h4>Follow Us</h4>
+            <div className="social-links">
+              <span className="social-icon"><Globe size={20} /></span>
+              <span className="social-icon"><MessageCircle size={20} /></span>
+              <span className="social-icon"><Hash size={20} /></span>
+            </div>
+          </div>
         </div>
-      </div>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} FinanceTracker. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
