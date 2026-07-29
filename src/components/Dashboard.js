@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   LineChart,
@@ -81,30 +81,30 @@ function Dashboard() {
   const categories = ["Food", "Transport", "Entertainment", "Shopping", "Bills", "Other"];
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
-useEffect(() => {
-  fetchExpenses();
-  fetchDeletedExpenses();
-  fetchBudgets();
-}, [searchDate, searchMonth, searchYear]);
+  const fetchExpenses = useCallback(async () => {
+  try {
+    let url = '/expenses';
+    const params = new URLSearchParams();
 
-  const fetchExpenses = async () => {
-    try {
-      let url = '/expenses';
-      const params = new URLSearchParams();
-      if (searchDate) params.append('date', searchDate);
-      if (searchMonth) params.append('month', searchMonth);
-      if (searchYear) params.append('year', searchYear);
-      if (searchQuery) params.append('q', searchQuery);
-      if (params.toString()) url += '?' + params.toString();
-      const response = await api.get(url);
-      setExpenses(response.data);
-    } catch (error) {
-      console.error("Error fetching expenses", error);
-    } finally {
-      setLoading(false);
+    if (searchDate) params.append('date', searchDate);
+    if (searchMonth) params.append('month', searchMonth);
+    if (searchYear) params.append('year', searchYear);
+    if (searchQuery) params.append('q', searchQuery);
+
+    if (params.toString()) {
+      url += '?' + params.toString();
     }
-  };
+
+    const response = await api.get(url);
+    setExpenses(response.data);
+
+  } catch (error) {
+    console.error("Error fetching expenses", error);
+
+  } finally {
+    setLoading(false);
+  }
+}, [searchDate, searchMonth, searchYear, searchQuery]);
 
   const fetchDeletedExpenses = async () => {
     try {
@@ -123,6 +123,12 @@ useEffect(() => {
       console.error("Error fetching budgets", error);
     }
 };
+ 
+useEffect(() => {
+  fetchExpenses();
+  fetchDeletedExpenses();
+  fetchBudgets();
+}, [fetchExpenses]);
 
   const handleAddExpense = async (e) => {
     e.preventDefault();
