@@ -81,11 +81,11 @@ function Dashboard() {
   const categories = ["Food", "Transport", "Entertainment", "Shopping", "Bills", "Other"];
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
- useEffect(() => {
+// eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
   fetchExpenses();
   fetchDeletedExpenses();
   fetchBudgets();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [searchDate, searchMonth, searchYear]);
 
   const fetchExpenses = async () => {
