@@ -16,7 +16,6 @@ function Home() {
 
   return (
     <div className="home-container">
-      {/* Hero Section with Interactive Background Image */}
       <section className="hero-section">
         <div className="hero-bg-image"></div>
         <div className="hero-overlay"></div>
@@ -42,7 +41,6 @@ function Home() {
         </div>
       </section>
 
-      {/* About Section */}
       <section className="about-section">
         <div className="section-header">
           <h2>What is this system?</h2>
@@ -72,7 +70,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Expectations Section */}
       <section className="expectations-section">
         <div className="section-header">
           <h2>What to expect</h2>
@@ -108,7 +105,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Footer / Contact Section */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-brand">
@@ -118,8 +114,8 @@ function Home() {
           <div className="footer-contact">
             <h4>Contact Us</h4>
             <p>Have questions? We're here to help.</p>
-            <a href="mailto:support@financetracker.com" className="contact-link">
-              support@financetracker.com
+            <a href="mailto:masengeshoodile@gmail.com.com" className="contact-link">
+              masengeshoodile@gmail.com
             </a>
           </div>
           <div className="footer-socials">

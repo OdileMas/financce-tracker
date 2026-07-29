@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: #FFF4D6;
+  color: #2D2D2D;
+  scroll-behavior: smooth;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  font-size: 0.9rem;
 }
 
 .loading-screen {
@@ -23,18 +23,84 @@ code {
     align-items: center;
     height: 100vh;
     font-size: 1.2rem;
-    color: #00bcd4;
+    color: #C65C26;
+    font-family: 'Outfit', sans-serif;
 }
 
-.delete-btn {
-    background: none;
-    border: none;
-    color: #ff5252;
-    cursor: pointer;
-    font-size: 1.5rem;
-    line-height: 1;
-    margin-left: 10px;
+/* Global button reset — consistent interaction pattern */
+button, .btn {
+  font-family: 'Outfit', sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.delete-btn:hover {
-    color: #d32f2f;
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+button:active {
+  transform: scale(0.97);
+  filter: brightness(0.95);
+  transition: all 0.1s ease;
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(198, 92, 38, 0.3);
+  outline-offset: 2px;
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px;
+  }
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Ensure images and media are responsive */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
