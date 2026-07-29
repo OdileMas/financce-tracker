@@ -1,13 +1,47 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend, BarChart, Bar } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+  BarChart,
+  Bar
+} from "recharts";
 import { useAuth } from "../context/AuthContext";
 import api from "../api";
-import { 
-  LogOut, Plus, Wallet, Trash2, AlertTriangle, Calendar, Clock,
-  Search, Edit2, Save, XCircle, ChevronDown, ChevronUp, ArrowLeft, Filter, X, RefreshCw,
-  TrendingUp, Target, CheckCircle, ShoppingCart, Car, Film, HomeIcon, CreditCard
+
+import {
+  LogOut,
+  Plus,
+  Wallet,
+  Trash2,
+  AlertTriangle,
+  Calendar,
+  Clock,
+  Search,
+  Edit2,
+  Save,
+  Filter,
+  X,
+  TrendingUp,
+  Target,
+  CheckCircle,
+  ShoppingCart,
+  Car,
+  Film,
+  HomeIcon,
+  CreditCard
 } from "lucide-react";
+
 import "./Dashboard.css";
 
 function Dashboard() {
