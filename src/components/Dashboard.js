@@ -53,13 +53,13 @@ function Dashboard() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showBudgetModal, setShowBudgetModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [showDeletedSection, setShowDeletedSection] = useState(false);
+
   const [loading, setLoading] = useState(true);
   const [searchDate, setSearchDate] = useState("");
   const [searchMonth, setSearchMonth] = useState("");
   const [searchYear, setSearchYear] = useState("");
-  const [searchTimeFrom, setSearchTimeFrom] = useState("");
-  const [searchTimeTo, setSearchTimeTo] = useState("");
+  
+  
   const [activeTab, setActiveTab] = useState("active");
   const [expenseForm, setExpenseForm] = useState({
     title: "",
@@ -81,11 +81,11 @@ function Dashboard() {
   const categories = ["Food", "Transport", "Entertainment", "Shopping", "Bills", "Other"];
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  useEffect(() => {
-    fetchExpenses();
-    fetchDeletedExpenses();
-    fetchBudgets();
-  }, [searchDate, searchMonth, searchYear]);
+ useEffect(() => {
+  fetchExpenses();
+  fetchDeletedExpenses();
+  fetchBudgets();
+}, [searchDate, searchMonth, searchYear]);
 
   const fetchExpenses = async () => {
     try {
@@ -206,15 +206,7 @@ function Dashboard() {
     }
   };
 
-  const handleDeleteBudget = async (id) => {
-    try {
-      await api.delete(`/budgets/${id}`);
-      fetchBudgets();
-      fetchExpenses();
-    } catch (error) {
-      console.error("Error deleting budget", error);
-    }
-  };
+ 
 
   const handleLogout = () => {
     logout();
