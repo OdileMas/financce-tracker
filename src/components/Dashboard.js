@@ -85,6 +85,7 @@ function Dashboard() {
   fetchExpenses();
   fetchDeletedExpenses();
   fetchBudgets();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [searchDate, searchMonth, searchYear]);
 
   const fetchExpenses = async () => {
